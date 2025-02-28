@@ -103,7 +103,7 @@ except FileNotFoundError:
     print(f"File tidak ditemukan: {PROXY_FILE}")
     exit()
 
-max_workers = 40
+max_workers = 20
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
     futures = [executor.submit(process_proxy, proxy_line) for proxy_line in proxies]
@@ -111,8 +111,8 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
 
 # Setelah semua proxy diproses, simpan ke file
 if active_proxies:
-    with open(OUTPUT_FILE, "w") as f_live:
-        f_live.write("\n".join(active_proxies) + "\n")
+    with open(OUTPUT_FILE, "w") as f_me:
+        f_me.write("\n".join(active_proxies) + "\n")
     print(f"Semua proxy aktif disimpan ke {OUTPUT_FILE}")
 
 print("Pengecekan proxy selesai.")
