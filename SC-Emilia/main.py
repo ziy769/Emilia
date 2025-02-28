@@ -95,7 +95,7 @@ except FileNotFoundError:
     print(f"File tidak ditemukan: {PROXY_FILE}")
     exit()
 
-max_workers = 35
+max_workers = 40
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
     futures = [executor.submit(process_proxy, proxy_line) for proxy_line in proxies]
