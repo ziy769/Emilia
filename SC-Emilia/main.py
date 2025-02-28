@@ -31,7 +31,7 @@ def check(host, path, proxy):
     conn = None
     try:
         ctx = ssl.create_default_context()
-        conn = socket.create_connection((ip, port), timeout=15)
+        conn = socket.create_connection((ip, port), timeout=5)
         conn = ctx.wrap_socket(conn, server_hostname=host)
 
         conn.sendall(payload.encode())
