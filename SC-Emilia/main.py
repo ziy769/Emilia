@@ -1,8 +1,12 @@
 # create by mayumi v.1
+"""
+NOte add lib re
+"""
 import socket
 import ssl
 import json
 import concurrent.futures
+import re
 
 IP_RESOLVER = "speed.cloudflare.com"
 PATH_RESOLVER = "/meta"
@@ -53,6 +57,9 @@ def check(host, path, proxy):
 
     return {}
 
+def clean_org_name(org_name): #Menghapus karakter yang tidak diinginkan dari nama organisasi.
+    return re.sub(r'[^a-zA-Z0-9\s]', '', org_name) if org_name else org_name
+
 def process_proxy(proxy_line):
     proxy_line = proxy_line.strip()
     if not proxy_line:
@@ -68,7 +75,8 @@ def process_proxy(proxy_line):
         ]
 
         if ori and pxy and ori.get("clientIp") != pxy.get("clientIp"):
-            org_name = pxy.get("asOrganization")
+            
+            org_name = clean_org_name(pxy.get("asOrganization"))
             proxy_country = pxy.get("country")
 
             proxy_entry = f"{ip},{port},{country},{org_name}"
