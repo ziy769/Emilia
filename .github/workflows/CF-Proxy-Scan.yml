@@ -29,7 +29,7 @@ jobs:
     
     - name: RUN CF Proxy Scan
       run: |
-        python3 ./CF-Scan_Proxy/main.py
+        python3 ./SC-Emilia/main.py
 
     #Commit dan push perubahan jika ada
     - name: 📤 Commit and Push Changes
