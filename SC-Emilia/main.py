@@ -6,8 +6,8 @@ import concurrent.futures
 
 IP_RESOLVER = "speed.cloudflare.com"
 PATH_RESOLVER = "/meta"
-PROXY_FILE = "CF-Scan_Proxy/rawProxyList.txt"
-OUTPUT_FILE = "CF-Scan_Proxy/alive.txt"
+PROXY_FILE = "Data /RawProxyISP.txt"
+OUTPUT_FILE = "out_data/alive.txt"
 
 active_proxies = []  # List untuk menyimpan proxy aktif
 
@@ -27,7 +27,7 @@ def check(host, path, proxy):
     conn = None
     try:
         ctx = ssl.create_default_context()
-        conn = socket.create_connection((ip, port), timeout=10)
+        conn = socket.create_connection((ip, port), timeout=15)
         conn = ctx.wrap_socket(conn, server_hostname=host)
 
         conn.sendall(payload.encode())
@@ -95,7 +95,7 @@ except FileNotFoundError:
     print(f"File tidak ditemukan: {PROXY_FILE}")
     exit()
 
-max_workers = 32
+max_workers = 35
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
     futures = [executor.submit(process_proxy, proxy_line) for proxy_line in proxies]
