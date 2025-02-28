@@ -1,10 +1,9 @@
 203.194.112.119,2053,ID,First Cagayan Converge Data Center Inc
-36.95.152.58:12137,ID,PT Telkom Indonesia
+36.95.152.58,12137,ID,PT Telkom Indonesia
 103.6.207.108,8080,ID,PT Pusat Media Indonesia
 103.63.101.10,443,ID,PT Newton Cipta Informatika
 185.169.107.233,443,AE,Digital City FZE
 185.169.107.99,443,AE,Digital City FZE
-195.246.110.155,8443,AE,365partners
 38.180.11.201,443,AE,M247 Europe
 129.151.149.168,25061,AE,Cloudflare Warp
 45.89.230.50,31599,AE,LLC Baxet
