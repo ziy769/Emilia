@@ -5402,7 +5402,6 @@
 86.104.75.143,443,HU,STARK INDUSTRIES SOLUTIONS LTD
 103.133.223.51,2096,ID,PT Cloud Teknologi Nusantara
 172.232.239.151,587,ID,Akamai Technologies Inc
-203.194.112.119,2053,ID,Rumahweb
 172.232.239.147,587,ID,Akamai Connected Cloud
 8.218.107.145,31166,ID,PT Cloud Hosting Indonesia
 203.194.112.119,8443,ID,CV Rumahweb Indonesia
