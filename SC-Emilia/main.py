@@ -10,7 +10,7 @@ import re
 
 IP_RESOLVER = "speed.cloudflare.com"
 PATH_RESOLVER = "/meta"
-PROXY_FILE = "Data/RawProxyISP.txt"
+PROXY_FILE = "Data/ProxyIsp.txt"
 OUTPUT_FILE = "Data/alive.txt"
 
 active_proxies = []  # List untuk menyimpan proxy aktif
