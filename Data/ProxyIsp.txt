@@ -5404,19 +5404,26 @@
 8.215.196.18,587,ID,Alibaba
 172.232.239.151,587,ID,Akamai Technologies Inc
 172.232.239.147,587,ID,Akamai Connected Cloud
+172.232.231.24,587,ID,Akamai Connected Cloud
+172.232.239.249,587,ID,Akamai Connected Cloud
+172.235.251.7,587,ID,Akamai Connected Cloud
+172.232.237.112,2053,ID,Akamai Connected Cloud
+172.232.237.31,587,ID,Akamai Connected Cloud
+172.232.239.134,443,ID,Akamai Connected Cloud
 8.218.107.145,31166,ID,PT Cloud Hosting Indonesia
 203.194.112.119,8443,ID,CV Rumahweb Indonesia
 103.133.223.52,2096,ID,Cloud Teknologi Nusantara
-172.232.231.24,587,ID,Akamai Connected Cloud
 103.186.1.209,2053,ID,PT Cloud Hosting Indonesia
 43.218.77.16,1443,ID,Amazon.com
+43.218.77.16,443,ID,Amazon.com
 203.194.112.119,2053,ID,First Cagayan Converge Data Center Inc
-172.232.239.249,587,ID,Akamai Connected Cloud
 43.133.145.156,53136,ID,Shenzhen Tencent Computer Systems Company Limited
 103.168.146.169,20132,ID,Herza.ID
 103.133.223.50,2096,ID,Cloud Teknologi Nusantara
 45.60.186.91,443,ID,Incapsula
 35.219.50.99,443,ID,Google LLC
+35.219.15.90,443,ID,Google LLC
+34.101.247.19,53681,ID,Google Cloud
 103.63.101.10,443,ID,PT Newton Cipta Informatika
 103.6.207.108,8080,ID,PT Pusat Media Indonesia
 36.95.152.58,12137,ID,PT Telkom Indonesia
