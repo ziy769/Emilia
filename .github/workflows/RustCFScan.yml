@@ -1,0 +1,57 @@
+name: Rust CF Scan
+
+on:
+  workflow_dispatch: # Memungkinkan dijalankan secara manual
+  # Workflow dijalankan otomatis tiap 6 jam
+  schedule:
+    - cron: '0 */6 * * *'  # Setiap 6 jam (00:00, 06:00, 12:00, 18:00 UTC)
+
+
+jobs:
+  update-proxies:
+    runs-on: ubuntu-latest
+    name: 🔎 Scan Proxy Rust Binary
+
+    steps:
+    - name: 📂 Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GIT_TOKEN }}
+
+    - name: 🛠️ Install Rust Toolchain
+      uses: dtolnay/rust-toolchain@stable
+
+    - name: 📦 Build Rust Project (Release)
+      run: cargo build --release
+
+    - name: 🧪 Give Execute Permission to Binary
+      run: chmod +x ./target/release/cekproxy
+
+    - name: 🚀 Run Rust Binary
+      run: ./target/release/cekproxy
+
+    - name: 📤 Commit and Push Changes
+      if: ${{ success() || failure() }}
+      run: |
+        git config --global user.name "Github Actions"
+        git config --global user.email "actions@github.com"
+        git remote set-url origin https://x-access-token:${{ secrets.GIT_TOKEN }}@github.com/${{ github.repository }}.git
+
+        git add Data/alive.txt
+
+        if ! git diff --staged --quiet; then
+          echo "Perubahan pada Data/alive.txt terdeteksi. Melakukan commit..."
+          git commit -m "🔁 Update alive.txt by CF Proxy Scan"
+          git push origin main
+        else
+          echo "Tidak ada perubahan pada alive.txt. Tidak perlu commit."
+        fi
+      shell: bash
+
+    - name: ⬆️ Upload alive.txt as Artifact (Opsional)
+      uses: actions/upload-artifact@v4
+      with:
+        name: alive-proxies
+        path: Data/alive.txt
+        if-no-files-found: ignore
