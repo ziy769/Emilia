@@ -1,9 +1,9 @@
 name: Go Proxy Scanning
 
 on:
-  # Bisa dijalankan manual dan otomatis tiap 6 jam
   workflow_dispatch:
-  
+  #schedule:
+   # - cron: "0 */6 * * *"  # Jalan setiap 6 jam
 
 jobs:
   update-proxies:
@@ -19,15 +19,15 @@ jobs:
     - name: 💾 Setup Go
       uses: actions/setup-go@v4
       with:
-        go-version: '1.22' # atau versi Go yang Kak Yumi pakai
+        go-version: '1.22' # Sesuaikan dengan versi Go kamu
 
     - name: 📦 Install Go Dependencies
-      run: |
-        go mod tidy
+      working-directory: ./SC-Emilia
+      run: go mod tidy
 
     - name: ▶️ Run Go Proxy Scan
-      run: |
-        go run ./SC-Emilia/main.go
+      working-directory: ./SC-Emilia
+      run: go run main.go
 
     - name: 📤 Commit and Push Changes
       if: ${{ success() }}
