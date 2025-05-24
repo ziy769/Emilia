@@ -32,32 +32,13 @@ jobs:
       run: ./target/release/cekproxy
 
     - name: 📤 Commit and Push Changes
-      if: ${{ success() || failure() }}
+      if: ${{ success() }}
       run: |
         git config --global user.name "Github Actions"
         git config --global user.email "actions@github.com"
-        git remote set-url origin https://x-access-token:${{ secrets.GIT_TOKEN }}@github.com/${{ github.repository }}.git
-
         git add Data/alive.txt
-
-        if ! git diff --staged --quiet; then
-          echo "Perubahan pada Data/alive.txt terdeteksi. Melakukan commit..."
-          git commit -m "🔁 Update alive.txt by Rust CF Scan"
-          
-          echo "Menarik perubahan dari remote main dengan rebase..."
-          git pull origin main --rebase
-
-          echo "Mendorong perubahan ke repository GitHub..."
-          git push origin main
-        else
-          echo "Tidak ada perubahan pada alive.txt. Tidak perlu commit."
-        fi
+        git commit -m " 🔁 Update proxyip"
+        git push origin main --force
       shell: bash
 
 
-    - name: ⬆️ Upload alive.txt as Artifact (Opsional)
-      uses: actions/upload-artifact@v4
-      with:
-        name: alive-proxies
-        path: Data/alive.txt
-        if-no-files-found: ignore
