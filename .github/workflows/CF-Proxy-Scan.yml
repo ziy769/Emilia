@@ -2,7 +2,7 @@ name: CF Proxy scan
 
 on:
   # Workflow dapat dijalankan secara manual
-  workflow_dispatch:
+  #workflow_dispatch:
 
 
 jobs:
