@@ -42,12 +42,18 @@ jobs:
 
         if ! git diff --staged --quiet; then
           echo "Perubahan pada Data/alive.txt terdeteksi. Melakukan commit..."
-          git commit -m "🔁 Update alive.txt by CF Proxy Scan"
+          git commit -m "🔁 Update alive.txt by Rust CF Scan"
+          
+          echo "Menarik perubahan dari remote main dengan rebase..."
+          git pull origin main --rebase
+
+          echo "Mendorong perubahan ke repository GitHub..."
           git push origin main
         else
           echo "Tidak ada perubahan pada alive.txt. Tidak perlu commit."
         fi
       shell: bash
+
 
     - name: ⬆️ Upload alive.txt as Artifact (Opsional)
       uses: actions/upload-artifact@v4
