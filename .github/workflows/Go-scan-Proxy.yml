@@ -33,7 +33,7 @@ jobs:
           # OPSI 1: Menjalankan dengan file input default (Data/ISPproxy.txt)
           # Pastikan konstanta defaultProxyFile di main.go sudah benar (misal, "Data/ISPproxy.txt")
           # dan file tersebut ada di repository dalam folder Data.
-          go ./cekproxyip/main.go
+          go run ./cekproxyip/main.go
 
           # OPSI 2: Jika kamu ingin menggunakan input dari URL secara default di Actions
           # Ganti 'https://url.kamu/daftarproxy.txt' dengan URL sebenarnya.
