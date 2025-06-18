@@ -13,9 +13,9 @@ use tokio_native_tls::TlsConnector as TokioTlsConnector; // Konektor TLS async
 
 const IP_RESOLVER: &str = "speed.cloudflare.com";
 const PATH_RESOLVER: &str = "/meta";
-const PROXY_FILE: &str = "Data/ProxyIsp.txt";
+const PROXY_FILE: &str = "Data/IPProxy19-6.txt"; //input
 const OUTPUT_FILE: &str = "Data/alive.txt";
-const MAX_CONCURRENT: usize = 100;
+const MAX_CONCURRENT: usize = 120;
 const TIMEOUT_SECONDS: u64 = 3;
 
 // Define a custom error type that implements Send + Sync
@@ -249,12 +249,12 @@ async fn process_proxy(
                     };
 
                     let proxy_entry = format!("{},{},{},{}", ip, port_num, country, org_name_from_response);
-                    println!("CF PROXY LIVE!: {}", proxy_entry);
+                    println!("CF PROXY LIVE ✅: {}", proxy_entry);
 
                     let mut active_proxies_locked = active_proxies.lock().unwrap();
                     active_proxies_locked.push(proxy_entry);
                 } else {
-                    println!("CF PROXY DEAD! (Same IP as original): {}:{}", ip, port_num);
+                    println!("CF PROXY DEAD X (Same IP as original): {}:{}", ip, port_num);
                 }
             } else {
                 println!("CF PROXY DEAD! (No clientIp field in response): {}:{} - Response: {:?}", ip, port_num, proxy_data);
