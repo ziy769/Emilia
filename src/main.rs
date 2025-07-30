@@ -254,14 +254,14 @@ async fn process_proxy(
                     let mut active_proxies_locked = active_proxies.lock().unwrap();
                     active_proxies_locked.push(proxy_entry);
                 } else {
-                    println!("CF PROXY DEAD X (Same IP as original): {}:{}", ip, port_num);
+                    println!("CF PROXY DEAD ❌ (Same IP as original): {}:{}", ip, port_num);
                 }
             } else {
-                println!("CF PROXY DEAD! (No clientIp field in response): {}:{} - Response: {:?}", ip, port_num, proxy_data);
+                println!("CF PROXY DEAD ❌ (No clientIp field in response): {}:{} - Response: {:?}", ip, port_num, proxy_data);
             }
         },
         Err(e) => {
-            println!("CF PROXY DEAD! (Error connecting): {}:{} - {}", ip, port_num, e);
+            println!("CF PROXY DEAD ⏱️ (Error connecting): {}:{} - {}", ip, port_num, e);
         }
     }
 }
