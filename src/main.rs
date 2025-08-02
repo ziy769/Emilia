@@ -13,10 +13,10 @@ use tokio_native_tls::TlsConnector as TokioTlsConnector; // Konektor TLS async
 
 const IP_RESOLVER: &str = "speed.cloudflare.com";
 const PATH_RESOLVER: &str = "/meta";
-const PROXY_FILE: &str = "Data/ProxyIP19-6.txt"; //input
+const PROXY_FILE: &str = "Data/ProxyIP2Agustus.txt"; //input
 const OUTPUT_FILE: &str = "Data/alive.txt";
 const MAX_CONCURRENT: usize = 175;
-const TIMEOUT_SECONDS: u64 =7;
+const TIMEOUT_SECONDS: u64 =9;
 
 // Define a custom error type that implements Send + Sync
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error + Send + Sync>>;
@@ -143,8 +143,16 @@ async fn check_connection(
 
         // Create TCP connection
         let stream = if let Some((proxy_ip, proxy_port)) = proxy {
-            // Connect to proxy
-            TcpStream::connect(format!("{}:{}", proxy_ip, proxy_port)).await?
+            // *** PERUBAHAN UTAMA DI SINI ***
+            // Menangani alamat IPv6 dengan benar dengan membungkusnya dalam kurung siku.
+            let connect_addr = if proxy_ip.contains(':') {
+                // Ini adalah alamat IPv6, formatnya menjadi "[ipv6]:port"
+                format!("[{}]:{}", proxy_ip, proxy_port)
+            } else {
+                // Ini adalah alamat IPv4, formatnya tetap "ipv4:port"
+                format!("{}:{}", proxy_ip, proxy_port)
+            };
+            TcpStream::connect(connect_addr).await?
         } else {
             // Connect directly to host (Tokio's connect can resolve hostnames)
             TcpStream::connect(format!("{}:443", host)).await?
