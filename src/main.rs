@@ -13,12 +13,12 @@ use tokio_native_tls::TlsConnector as TokioTlsConnector; // Konektor TLS async
 
 const IP_RESOLVER: &str = "speed.cloudflare.com";
 const PATH_RESOLVER: &str = "/meta";
-const PROXY_FILE: &str = "Data/ProxyIP2Agustus.txt"; //input
+const PROXY_FILE: &str = "Data/hasil40kPxyIP.txt"; //input
 const OUTPUT_FILE: &str = "Data/alive.txt";
 const MAX_CONCURRENT: usize = 175;
 const TIMEOUT_SECONDS: u64 =9;
 
-// Define a custom error type that implements Send + Sync
+// Define a custom error type that implements Send + SData/ProxyIP2Agustus.txtync
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error + Send + Sync>>;
 
 #[tokio::main]
